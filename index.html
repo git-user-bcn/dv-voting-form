@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Votación por Puntos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .voter-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .player-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #fafafa;
+            border-radius: 5px;
+        }
+        
+        .player-name {
+            font-weight: bold;
+            color: #333;
+            flex: 1;
+        }
+        
+        select {
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            min-width: 80px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .submit-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .error-message {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #ffebee;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .success-message {
+            color: #2e7d32;
+            font-size: 14px;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f5e8;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e8f4f8;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .results h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Votación por Puntos</h1>
+        
+        <form id="votingForm">
+            <div class="voter-section">
+                <label for="voterName">Nombre del votante:</label>
+                <input type="text" id="voterName" name="voterName" required>
+            </div>
+            
+            <div class="players-section">
+                <h3>Asigna puntos a cada jugador (5, 3, 2, 1, 0):</h3>
+                
+                <div class="player-row">
+                    <div class="player-name">Aníbal</div>
+                    <select name="Aníbal" required>
+                        <option value="">Seleccionar</option>
+                        <option value="5">5 puntos</option>
+                        <option value="3">3 puntos</option>
+                        <option value="2">2 puntos</option>
+                        <option value="1">1 punto</option>
+                        <option value="0">0 puntos</option>
+                    </select>
+                </div>
+                
+                <div class="player-row">
+                    <div class="player-name">Dani Besteiro</div>
+                    <select name="Dani Besteiro" required>
+                        <option value="">Seleccionar</option>
+                        <option value="5">5 puntos</option>
+                        <option value="3">3 puntos</option>
+                        <option value="2">2 puntos</option>
+                        <option value="1">1 punto</option>
+                        <option value="0">0 puntos</option>
+                    </select>
+                </div>
+                
+                <div class="player-row">
+                    <div class="player-name">Fon</div>
+                    <select name="Fon" required>
+                        <option value="">Seleccionar</option>
+                        <option value="5">5 puntos</option>
+                        <option value="3">3 puntos</option>
+                        <option value="2">2 puntos</option>
+                        <option value="1">1 punto</option>
+                        <option value="0">0 puntos</option>
+                    </select>
+                </div>
+                
+                <div class="player-row">
+                    <div class="player-name">Acoydam</div>
+                    <select name="Acoydam" required>
+                        <option value="">Seleccionar</option>
+                        <option value="5">5 puntos</option>
+                        <option value="3">3 puntos</option>
+                        <option value="2">2 puntos</option>
+                        <option value="1">1 punto</option>
+                        <option value="0">0 puntos</option>
+                    </select>
+                </div>
+                
+                <div class="player-row">
+                    <div class="player-name">Omar</div>
+                    <select name="Omar" required>
+                        <option value="">Seleccionar</option>
+                        <option value="5">5 puntos</option>
+                        <option value="3">3 puntos</option>
+                        <option value="2">2 puntos</option>
+                        <option value="1">1 punto</option>
+                        <option value="0">0 puntos</option>
+                    </select>
+                </div>
+                
+                <div class="player-row">
+                    <div class="player-name">Juan</div>
+                    <select name="Juan" required>
+                        <option value="">Seleccionar</option>
+                        <option value="5">5 puntos</option>
+                        <option value="3">3 puntos</option>
+                        <option value="2">2 puntos</option>
+                        <option value="1">1 punto</option>
+                        <option value="0">0 puntos</option>
+                    </select>
+                </div>
+                
+                <div class="player-row">
+                    <div class="player-name">Rafa</div>
+                    <select name="Rafa" required>
+                        <option value="">Seleccionar</option>
+                        <option value="5">5 puntos</option>
+                        <option value="3">3 puntos</option>
+                        <option value="2">2 puntos</option>
+                        <option value="1">1 punto</option>
+                        <option value="0">0 puntos</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Enviar Votación</button>
+            
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
+        </form>
+        
+        <div id="results" class="results">
+            <h3>Votación registrada:</h3>
+            <div id="resultContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Array para almacenar las votaciones (simulando una base de datos)
+        let votaciones = [];
+        
+        const form = document.getElementById('votingForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const results = document.getElementById('results');
+        const resultContent = document.getElementById('resultContent');
+        
+        // Función para validar que no se repitan puntuaciones (excepto 0)
+        function validateScores(formData) {
+            const scores = [];
+            const players = ['Aníbal', 'Dani Besteiro', 'Fon', 'Acoydam', 'Omar', 'Juan', 'Rafa'];
+            
+            for (let player of players) {
+                const score = formData.get(player);
+                if (score !== '0' && scores.includes(score)) {
+                    return `Error: La puntuación ${score} ya está asignada a otro jugador.`;
+                }
+                if (score !== '0') {
+                    scores.push(score);
+                }
+            }
+            
+            // Verificar que se han usado todas las puntuaciones necesarias
+            const requiredScores = ['5', '3', '2', '1'];
+            for (let required of requiredScores) {
+                if (!scores.includes(required)) {
+                    return `Error: Debes asignar la puntuación ${required} a algún jugador.`;
+                }
+            }
+            
+            return null;
+        }
+        
+        // Función para enviar email con EmailJS (requiere configuración)
+        function enviarPorEmail(votacion) {
+            // Ejemplo con EmailJS (necesita configuración previa)
+            // emailjs.send('tu_service_id', 'tu_template_id', {
+            //     to_email: 'destinatario@email.com',
+            //     votante: votacion.votante,
+            //     fecha: votacion.fecha,
+            //     puntuaciones: JSON.stringify(votacion.puntuaciones, null, 2)
+            // });
+            
+            console.log('Email enviado (simulado):', votacion);
+        }
+        
+        // Función para crear enlace de email automático
+        function crearEnlaceEmail(votacion) {
+            const subject = `Nueva Votación de ${votacion.votante}`;
+            let body = `Votación registrada:\n\n`;
+            body += `Votante: ${votacion.votante}\n`;
+            body += `Fecha: ${votacion.fecha}\n\n`;
+            body += `Puntuaciones:\n`;
+            
+            // Ordenar por puntuación
+            const sortedScores = Object.entries(votacion.puntuaciones).sort((a, b) => b[1] - a[1]);
+            for (let [player, score] of sortedScores) {
+                body += `• ${player}: ${score} puntos\n`;
+            }
+            
+            // Crear enlace mailto
+            const mailtoLink = `mailto:david.monne@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Abrir cliente de email
+            window.open(mailtoLink);
+        }
+        
+        // Función para registrar la votación
+        function registrarVotacion(voterName, scores) {
+            const votacion = {
+                id: Date.now(),
+                votante: voterName,
+                fecha: new Date().toLocaleString('es-ES'),
+                puntuaciones: scores
+            };
+            
+            votaciones.push(votacion);
+            console.log('Votación registrada:', votacion);
+            console.log('Todas las votaciones:', votaciones);
+            
+            // Enviar por email automáticamente
+            crearEnlaceEmail(votacion);
+            
+            return votacion;
+        }
+        
+        // Evento de envío del formulario
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ocultar mensajes previos
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            results.style.display = 'none';
+            
+            const formData = new FormData(form);
+            const voterName = formData.get('voterName').trim();
+            
+            if (!voterName) {
+                errorMessage.textContent = 'Por favor, introduce tu nombre.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Validar puntuaciones
+            const validationError = validateScores(formData);
+            if (validationError) {
+                errorMessage.textContent = validationError;
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Recopilar las puntuaciones
+            const players = ['Aníbal', 'Dani Besteiro', 'Fon', 'Acoydam', 'Omar', 'Juan', 'Rafa'];
+            const scores = {};
+            
+            for (let player of players) {
+                scores[player] = parseInt(formData.get(player));
+            }
+            
+            // Registrar la votación
+            const votacion = registrarVotacion(voterName, scores);
+            
+            // Mostrar resultado
+            let resultHTML = `
+                <p><strong>Votante:</strong> ${votacion.votante}</p>
+                <p><strong>Fecha:</strong> ${votacion.fecha}</p>
+                <p><strong>Puntuaciones:</strong></p>
+                <ul>
+            `;
+            
+            // Ordenar por puntuación para mostrar mejor
+            const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+            
+            for (let [player, score] of sortedScores) {
+                resultHTML += `<li>${player}: ${score} puntos</li>`;
+            }
+            
+            resultHTML += '</ul>';
+            resultContent.innerHTML = resultHTML;
+            
+            successMessage.textContent = 'Votación enviada y registrada correctamente. Se ha abierto tu cliente de email para enviar los resultados.';
+            successMessage.style.display = 'block';
+            results.style.display = 'block';
+            
+            // Resetear el formulario
+            form.reset();
+        });
+        
+        // Función para actualizar las opciones disponibles en tiempo real
+        function updateAvailableOptions() {
+            const selects = form.querySelectorAll('select');
+            const usedValues = [];
+            
+            // Recopilar valores ya seleccionados (excepto 0 y vacío)
+            selects.forEach(select => {
+                const value = select.value;
+                if (value && value !== '0') {
+                    usedValues.push(value);
+                }
+            });
+            
+            // Actualizar opciones en cada select
+            selects.forEach(select => {
+                const currentValue = select.value;
+                const options = select.querySelectorAll('option');
+                
+                options.forEach(option => {
+                    const value = option.value;
+                    if (value && value !== '0' && value !== currentValue) {
+                        option.disabled = usedValues.includes(value);
+                    } else {
+                        option.disabled = false;
+                    }
+                });
+            });
+        }
+        
+        // Agregar listeners para actualizar opciones en tiempo real
+        form.addEventListener('change', updateAvailableOptions);
+    </script>
+</body>
+</html>
