@@ -165,18 +165,6 @@
                 </div>
                 
                 <div class="player-row">
-                    <div class="player-name">Fon</div>
-                    <select name="Fon" required>
-                        <option value="">Seleccionar</option>
-                        <option value="5">5 puntos</option>
-                        <option value="3">3 puntos</option>
-                        <option value="2">2 puntos</option>
-                        <option value="1">1 punto</option>
-                        <option value="0">0 puntos</option>
-                    </select>
-                </div>
-                
-                <div class="player-row">
                     <div class="player-name">Acoydam</div>
                     <select name="Acoydam" required>
                         <option value="">Seleccionar</option>
@@ -250,7 +238,7 @@
         // Función para validar que no se repitan puntuaciones (excepto 0)
         function validateScores(formData) {
             const scores = [];
-            const players = ['Aníbal', 'Dani Besteiro', 'Fon', 'Acoydam', 'Omar', 'Juan', 'Rafa'];
+            const players = ['Aníbal', 'Dani Besteiro', 'Acoydam', 'Omar', 'Juan', 'Rafa'];
             
             for (let player of players) {
                 const score = formData.get(player);
@@ -353,7 +341,7 @@
             }
             
             // Recopilar las puntuaciones
-            const players = ['Aníbal', 'Dani Besteiro', 'Fon', 'Acoydam', 'Omar', 'Juan', 'Rafa'];
+            const players = ['Aníbal', 'Dani Besteiro', 'Acoydam', 'Omar', 'Juan', 'Rafa'];
             const scores = {};
             
             for (let player of players) {
